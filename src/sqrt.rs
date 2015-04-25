@@ -37,16 +37,16 @@ trait_sqrt!(f64);
 
 #[test]
 fn sqrt() {
-    assert!((4u8).sqrt() == 2u8);
-    assert!((4u16).sqrt() == 2u16);
-    assert!((4u32).sqrt() == 2u32);
-    assert!((4u64).sqrt() == 2u64);
+    assert_eq!((4u8).sqrt(), 2u8);
+    assert_eq!((4u16).sqrt(), 2u16);
+    assert_eq!((4u32).sqrt(), 2u32);
+    assert_eq!((4u64).sqrt(), 2u64);
 
-    assert!((4i8).sqrt() == 2i8);
-    assert!((4i16).sqrt() == 2i16);
-    assert!((4i32).sqrt() == 2i32);
-    assert!((4i64).sqrt() == 2i64);
+    assert_eq!((4i8).sqrt(), 2i8);
+    assert_eq!((4i16).sqrt(), 2i16);
+    assert_eq!((4i32).sqrt(), 2i32);
+    assert_eq!((4i64).sqrt(), 2i64);
 
-    assert!((4f32).sqrt() == 2f32);
-    assert!((4f64).sqrt() == 2f64);
+    assert_eq!((4f32).sqrt(), 2f32);
+    assert_eq!((4f64).sqrt(), 2f64);
 }

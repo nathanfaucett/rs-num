@@ -103,7 +103,7 @@ trait_trig!(f64);
 
 #[test]
 fn trig() {
-    assert!((0f32).sin() == 0f32);
-    assert!((0f32).cos() == 1f32);
-    assert!((0f32).tan() == 0f32);
+    assert_eq!((0f32).sin(), 0f32);
+    assert_eq!((0f32).cos(), 1f32);
+    assert_eq!((0f32).tan(), 0f32);
 }

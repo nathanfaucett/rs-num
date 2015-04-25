@@ -46,13 +46,13 @@ trait_signum_float!(f64);
 
 #[test]
 fn signum() {
-    assert!((0u32).signum() == 0u32);
-    assert!((1u32).signum() == 1u32);
+    assert_eq!((0u32).signum(), 0u32);
+    assert_eq!((1u32).signum(), 1u32);
 
-    assert!((0i32).signum() == 0i32);
-    assert!((-1i32).signum() == -1i32);
-    assert!((1i32).signum() == 1i32);
+    assert_eq!((0i32).signum(), 0i32);
+    assert_eq!((-1i32).signum(), -1i32);
+    assert_eq!((1i32).signum(), 1i32);
 
-    assert!((-1f32).signum() == -1f32);
-    assert!((1f32).signum() == 1f32);
+    assert_eq!((-1f32).signum(), -1f32);
+    assert_eq!((1f32).signum(), 1f32);
 }
