@@ -1,6 +1,9 @@
 use std::ops::*;
 
 
+pub mod from_primitive;
+pub use from_primitive::FromPrimitive;
+
 pub mod min;
 pub use min::Min;
 
@@ -25,6 +28,7 @@ pub use trig::Trig;
 pub trait Num:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
+    + FromPrimitive
     + Trig
     + PartialEq
     + Add<Self, Output = Self>
@@ -37,6 +41,7 @@ pub trait Num:
 impl<T> Num for T where T:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
+    + FromPrimitive
     + Trig
     + PartialEq
     + Add<T, Output = T>

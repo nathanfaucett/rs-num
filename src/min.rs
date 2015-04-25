@@ -2,55 +2,29 @@ pub trait Min {
     fn min(self, other: Self) -> Self;
 }
 
-impl Min for u8 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
+macro_rules! trait_min {
+    ($t:ident) => (
+        impl Min for $t {
+            #[inline(always)]
+            fn min(self, other: Self) -> Self { if self < other { self } else { other } }
+        }
+    );
 }
 
-impl Min for u16 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
+trait_min!(usize);
+trait_min!(u8);
+trait_min!(u16);
+trait_min!(u32);
+trait_min!(u64);
 
-impl Min for u32 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
+trait_min!(isize);
+trait_min!(i8);
+trait_min!(i16);
+trait_min!(i32);
+trait_min!(i64);
 
-impl Min for u64 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
-
-impl Min for i8 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
-
-impl Min for i16 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
-
-impl Min for i32 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
-
-impl Min for i64 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
-
-impl Min for f32 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
-
-impl Min for f64 {
-    #[inline(always)]
-    fn min(self, other: Self) -> Self { if self < other { self } else { other } }
-}
+trait_min!(f32);
+trait_min!(f64);
 
 #[test]
 fn min() {

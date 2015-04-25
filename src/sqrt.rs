@@ -2,45 +2,38 @@ pub trait Sqrt {
     fn sqrt(self) -> Self;
 }
 
-impl Sqrt for u8 {
-    fn sqrt(self) -> u8 {(self as f32).sqrt() as u8}
+macro_rules! trait_sqrt_as {
+    ($t:ident, $a:ident) => (
+        impl Sqrt for $t {
+            #[inline(always)]
+            fn sqrt(self) -> Self {(self as $a).sqrt() as $t}
+        }
+    );
 }
 
-impl Sqrt for u16 {
-    fn sqrt(self) -> u16 {(self as f32).sqrt() as u16}
+macro_rules! trait_sqrt {
+    ($t:ident) => (
+        impl Sqrt for $t {
+            #[inline(always)]
+            fn sqrt(self) -> Self {self.sqrt()}
+        }
+    );
 }
 
-impl Sqrt for u32 {
-    fn sqrt(self) -> u32 {(self as f32).sqrt() as u32}
-}
+trait_sqrt_as!(usize, f32);
+trait_sqrt_as!(u8, f32);
+trait_sqrt_as!(u16, f32);
+trait_sqrt_as!(u32, f32);
+trait_sqrt_as!(u64, f64);
 
-impl Sqrt for u64 {
-    fn sqrt(self) -> u64 {(self as f32).sqrt() as u64}
-}
+trait_sqrt_as!(isize, f32);
+trait_sqrt_as!(i8, f32);
+trait_sqrt_as!(i16, f32);
+trait_sqrt_as!(i32, f32);
+trait_sqrt_as!(i64, f64);
 
-impl Sqrt for i8 {
-    fn sqrt(self) -> i8 {(self as f32).sqrt() as i8}
-}
-
-impl Sqrt for i16 {
-    fn sqrt(self) -> i16 {(self as f32).sqrt() as i16}
-}
-
-impl Sqrt for i32 {
-    fn sqrt(self) -> i32 {(self as f32).sqrt() as i32}
-}
-
-impl Sqrt for i64 {
-    fn sqrt(self) -> i64 {(self as f64).sqrt() as i64}
-}
-
-impl Sqrt for f32 {
-    fn sqrt(self) -> f32 {self.sqrt()}
-}
-
-impl Sqrt for f64 {
-    fn sqrt(self) -> f64 {self.sqrt()}
-}
+trait_sqrt!(f32);
+trait_sqrt!(f64);
 
 #[test]
 fn sqrt() {

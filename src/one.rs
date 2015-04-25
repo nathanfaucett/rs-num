@@ -2,42 +2,35 @@ pub trait One {
     fn one() -> Self;
 }
 
-impl One for u8 {
-    fn one() -> u8 { 1u8 }
+macro_rules! trait_one {
+    ($t:ident) => (
+        impl One for $t {
+            #[inline(always)]
+            fn one() -> $t { 1 }
+        }
+    );
 }
 
-impl One for u16 {
-    fn one() -> u16 { 1u16 }
+macro_rules! trait_one_float {
+    ($t:ident) => (
+        impl One for $t {
+            #[inline(always)]
+            fn one() -> $t { 1.0 }
+        }
+    );
 }
 
-impl One for u32 {
-    fn one() -> u32 { 1u32 }
-}
+trait_one!(usize);
+trait_one!(u8);
+trait_one!(u16);
+trait_one!(u32);
+trait_one!(u64);
 
-impl One for u64 {
-    fn one() -> u64 { 1u64 }
-}
+trait_one!(isize);
+trait_one!(i8);
+trait_one!(i16);
+trait_one!(i32);
+trait_one!(i64);
 
-impl One for i8 {
-    fn one() -> i8 { 1i8 }
-}
-
-impl One for i16 {
-    fn one() -> i16 { 1i16 }
-}
-
-impl One for i32 {
-    fn one() -> i32 { 1i32 }
-}
-
-impl One for i64 {
-    fn one() -> i64 { 1i64 }
-}
-
-impl One for f32 {
-    fn one() -> f32 { 1f32 }
-}
-
-impl One for f64 {
-    fn one() -> f64 { 1f64 }
-}
+trait_one_float!(f32);
+trait_one_float!(f64);

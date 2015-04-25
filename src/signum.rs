@@ -2,55 +2,47 @@ pub trait Signum {
     fn signum(self) -> Self;
 }
 
-impl Signum for u8 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0u8 {1u8} else {0u8} }
+macro_rules! trait_signum_unsigned {
+    ($t:ident) => (
+        impl Signum for $t {
+            #[inline(always)]
+            fn signum(self) -> Self { if self > 0 {1} else {0} }
+        }
+    );
 }
 
-impl Signum for u16 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0u16 {1u16} else {0u16} }
+macro_rules! trait_signum_signed {
+    ($t:ident) => (
+        impl Signum for $t {
+            #[inline(always)]
+            fn signum(self) -> Self { if self > 0 {1} else if self < 0 {-1} else {0} }
+        }
+    );
 }
 
-impl Signum for u32 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0u32 {1u32} else {0u32} }
+macro_rules! trait_signum_float {
+    ($t:ident) => (
+        impl Signum for $t {
+            #[inline(always)]
+            fn signum(self) -> Self { if self > 0.0 {1.0} else if self < 0.0 {-1.0} else {0.0} }
+        }
+    );
 }
 
-impl Signum for u64 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0u64 {1u64} else {0u64} }
-}
+trait_signum_unsigned!(usize);
+trait_signum_unsigned!(u8);
+trait_signum_unsigned!(u16);
+trait_signum_unsigned!(u32);
+trait_signum_unsigned!(u64);
 
-impl Signum for i8 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0i8 {1i8} else if self < 0i8 {-1i8} else {0i8} }
-}
+trait_signum_signed!(isize);
+trait_signum_signed!(i8);
+trait_signum_signed!(i16);
+trait_signum_signed!(i32);
+trait_signum_signed!(i64);
 
-impl Signum for i16 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0i16 {1i16} else if self < 0i16 {-1i16} else {0i16} }
-}
-
-impl Signum for i32 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0i32 {1i32} else if self < 0i32 {-1i32} else {0i32} }
-}
-
-impl Signum for i64 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0i64 {1i64} else if self < 0i64 {-1i64} else {0i64} }
-}
-
-impl Signum for f32 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0f32 {1f32} else if self < 0f32 {-1f32} else {0f32} }
-}
-
-impl Signum for f64 {
-    #[inline(always)]
-    fn signum(self) -> Self { if self > 0f64 {1f64} else if self < 0f64 {-1f64} else {0f64} }
-}
+trait_signum_float!(f32);
+trait_signum_float!(f64);
 
 #[test]
 fn signum() {

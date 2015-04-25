@@ -2,42 +2,35 @@ pub trait Zero {
     fn zero() -> Self;
 }
 
-impl Zero for u8 {
-    fn zero() -> u8 { 0u8 }
+macro_rules! trait_zero {
+    ($t:ident) => (
+        impl Zero for $t {
+            #[inline(always)]
+            fn zero() -> $t { 0 }
+        }
+    );
 }
 
-impl Zero for u16 {
-    fn zero() -> u16 { 0u16 }
+macro_rules! trait_zero_float {
+    ($t:ident) => (
+        impl Zero for $t {
+            #[inline(always)]
+            fn zero() -> $t { 0.0 }
+        }
+    );
 }
 
-impl Zero for u32 {
-    fn zero() -> u32 { 0u32 }
-}
+trait_zero!(usize);
+trait_zero!(u8);
+trait_zero!(u16);
+trait_zero!(u32);
+trait_zero!(u64);
 
-impl Zero for u64 {
-    fn zero() -> u64 { 0u64 }
-}
+trait_zero!(isize);
+trait_zero!(i8);
+trait_zero!(i16);
+trait_zero!(i32);
+trait_zero!(i64);
 
-impl Zero for i8 {
-    fn zero() -> i8 { 0i8 }
-}
-
-impl Zero for i16 {
-    fn zero() -> i16 { 0i16 }
-}
-
-impl Zero for i32 {
-    fn zero() -> i32 { 0i32 }
-}
-
-impl Zero for i64 {
-    fn zero() -> i64 { 0i64 }
-}
-
-impl Zero for f32 {
-    fn zero() -> f32 { 0f32 }
-}
-
-impl Zero for f64 {
-    fn zero() -> f64 { 0f64 }
-}
+trait_zero_float!(f32);
+trait_zero_float!(f64);

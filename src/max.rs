@@ -2,55 +2,29 @@ pub trait Max {
     fn max(self, other: Self) -> Self;
 }
 
-impl Max for u8 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
+macro_rules! trait_max {
+    ($t:ident) => (
+        impl Max for $t {
+            #[inline(always)]
+            fn max(self, other: Self) -> Self { if self > other { self } else { other } }
+        }
+    );
 }
 
-impl Max for u16 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
+trait_max!(usize);
+trait_max!(u8);
+trait_max!(u16);
+trait_max!(u32);
+trait_max!(u64);
 
-impl Max for u32 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
+trait_max!(isize);
+trait_max!(i8);
+trait_max!(i16);
+trait_max!(i32);
+trait_max!(i64);
 
-impl Max for u64 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
-
-impl Max for i8 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
-
-impl Max for i16 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
-
-impl Max for i32 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
-
-impl Max for i64 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
-
-impl Max for f32 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
-
-impl Max for f64 {
-    #[inline(always)]
-    fn max(self, other: Self) -> Self { if self > other { self } else { other } }
-}
+trait_max!(f32);
+trait_max!(f64);
 
 #[test]
 fn max() {
