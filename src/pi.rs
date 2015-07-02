@@ -1,5 +1,7 @@
 pub trait PI {
+    fn half_pi() -> Self;
     fn pi() -> Self;
+    fn two_pi() -> Self;
 }
 
 macro_rules! trait_pi {
