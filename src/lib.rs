@@ -25,11 +25,15 @@ pub use sqrt::Sqrt;
 pub mod trig;
 pub use trig::Trig;
 
+pub mod pi;
+pub use pi::PI;
+
 pub trait Num:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
     + FromPrimitive
     + Trig
+    + PI
     + PartialEq
     + PartialOrd
     + Add<Self, Output = Self>
@@ -44,6 +48,7 @@ impl<T> Num for T where T:
     + Min + Max + Signum
     + FromPrimitive
     + Trig
+    + PI
     + PartialEq
     + PartialOrd
     + Add<T, Output = T>
