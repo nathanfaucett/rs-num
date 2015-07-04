@@ -42,7 +42,7 @@ impl Abs for f64 {
 }
 
 #[test]
-fn trig() {
+fn abs() {
     assert_eq!((-1).abs(), 1);
     assert_eq!((-1.0).abs(), 1.0);
     assert_eq!((2).abs(), 2);
