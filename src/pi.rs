@@ -8,7 +8,7 @@ macro_rules! trait_pi {
     ($t:ident) => (
         impl PI for $t {
             #[inline(always)]
-            fn half_pi() -> $t { 1 }
+            fn half_pi() -> $t { 2 }
             fn pi() -> $t { 3 }
             fn two_pi() -> $t { 6 }
         }
