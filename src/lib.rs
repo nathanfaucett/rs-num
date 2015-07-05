@@ -4,6 +4,9 @@ use std::ops::*;
 pub mod abs;
 pub use abs::Abs;
 
+pub mod pi;
+pub use pi::PI;
+
 pub mod from_primitive;
 pub use from_primitive::FromPrimitive;
 
@@ -32,6 +35,7 @@ pub trait Num:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
     + Abs
+    + PI
     + FromPrimitive
     + Trig
     + PartialEq
@@ -47,6 +51,7 @@ impl<T> Num for T where T:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
     + Abs
+    + PI
     + FromPrimitive
     + Trig
     + PartialEq
