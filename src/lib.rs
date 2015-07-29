@@ -40,6 +40,7 @@ pub trait Num:
     + Trig
     + PartialEq
     + PartialOrd
+    + ToString
     + Add<Self, Output = Self>
     + Mul<Self, Output = Self>
     + Sub<Self, Output = Self>
@@ -56,6 +57,7 @@ impl<T> Num for T where T:
     + Trig
     + PartialEq
     + PartialOrd
+    + ToString
     + Add<T, Output = T>
     + Mul<T, Output = T>
     + Sub<T, Output = T>
