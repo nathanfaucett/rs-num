@@ -31,6 +31,9 @@ pub use sqrt::Sqrt;
 pub mod trig;
 pub use trig::Trig;
 
+pub mod round;
+pub use round::Round;
+
 pub trait Num:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
@@ -41,6 +44,7 @@ pub trait Num:
     + PartialEq
     + PartialOrd
     + ToString
+    + Round
 
     + Add<Self, Output = Self>
     + Mul<Self, Output = Self>
@@ -59,6 +63,7 @@ impl<T> Num for T where T:
     + PartialEq
     + PartialOrd
     + ToString
+    + Round
 
     + Add<T, Output = T>
     + Mul<T, Output = T>
