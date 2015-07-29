@@ -41,6 +41,13 @@ pub trait Num:
     + PartialEq
     + PartialOrd
     + ToString
+
+    + BitAnd<Self, Output = Self>
+    + BitOr<Self, Output = Self>
+    + BitXor<Self, Output = Self>
+    + Shl<Self, Output = Self>
+    + Shr<Self, Output = Self>
+
     + Add<Self, Output = Self>
     + Mul<Self, Output = Self>
     + Sub<Self, Output = Self>
@@ -58,6 +65,13 @@ impl<T> Num for T where T:
     + PartialEq
     + PartialOrd
     + ToString
+
+    + BitAnd<T, Output = T>
+    + BitOr<T, Output = T>
+    + BitXor<T, Output = T>
+    + Shl<T, Output = T>
+    + Shr<T, Output = T>
+
     + Add<T, Output = T>
     + Mul<T, Output = T>
     + Sub<T, Output = T>
