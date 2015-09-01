@@ -1,4 +1,10 @@
-use std::ops::*;
+#![feature(no_std, core, collections)]
+#![no_std]
+
+extern crate collections;
+
+use collections::string::ToString;
+use core::ops::*;
 
 
 pub mod abs;
