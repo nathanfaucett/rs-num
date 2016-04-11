@@ -9,3 +9,6 @@ license = "MIT"
 readme = "README.md"
 repository = "https://github.com/nathanfaucett/rs-num.git"
 homepage = "https://github.com/nathanfaucett/rs-num"
+
+[dependencies]
+libc = "0.2.9"

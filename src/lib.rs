@@ -1,11 +1,11 @@
-#![feature(no_std, core, collections)]
+#![feature(core_intrinsics, collections)]
 #![no_std]
 
+extern crate libc;
 extern crate collections;
 
 use collections::string::ToString;
 use core::ops::*;
-
 
 pub mod abs;
 pub use abs::Abs;

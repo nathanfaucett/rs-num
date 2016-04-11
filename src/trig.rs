@@ -16,6 +16,12 @@ pub trait Trig {
     fn atan2(self, other: Self) -> Self;
 }
 
+macro_rules! call_unsafe {
+    ($n:ident, $fname:ident, $t:ident, $a:ident) => (
+        fn $n(self) -> Self { unsafe { $fname::cmath::$n(self as $a) as $t } }
+    )
+}
+
 macro_rules! trait_trig_as {
     ($t:ident, $a:ident) => (
         impl Trig for $t {
@@ -98,7 +104,8 @@ trait_trig_as!(i16, f32);
 trait_trig_as!(i32, f32);
 trait_trig_as!(i64, f64);
 
-trait_trig!(f32);
+trait_trig_as!(f32, f64);
+
 trait_trig!(f64);
 
 #[test]

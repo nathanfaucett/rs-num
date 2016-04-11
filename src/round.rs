@@ -1,3 +1,6 @@
+use core::intrinsics::{roundf32, roundf64};
+
+
 pub trait Round {
     fn round(self) -> Self;
 }
@@ -25,11 +28,11 @@ trait_round!(i64);
 
 impl Round for f32 {
     #[inline(always)]
-    fn round(self) -> f32 { self.round()  }
+    fn round(self) -> f32 { unsafe { roundf32(self) } }
 }
 impl Round for f64 {
     #[inline(always)]
-    fn round(self) -> f64 { self.round() }
+    fn round(self) -> f64 { unsafe { roundf64(self) } }
 }
 
 #[test]
