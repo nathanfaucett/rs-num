@@ -25,6 +25,9 @@ git = "https://github.com/nathanfaucett/rs-min.git"
 [dependencies.one]
 git = "https://github.com/nathanfaucett/rs-one.git"
 
+[dependencies.pi]
+git = "https://github.com/nathanfaucett/rs-pi.git"
+
 [dependencies.round]
 git = "https://github.com/nathanfaucett/rs-round.git"
 

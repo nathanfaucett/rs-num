@@ -9,6 +9,7 @@ extern crate from_primitive;
 extern crate max;
 extern crate min;
 extern crate one;
+extern crate pi;
 extern crate round;
 extern crate signum;
 extern crate sqrt;
@@ -23,6 +24,7 @@ pub use from_primitive::FromPrimitive;
 pub use max::Max;
 pub use min::Min;
 pub use one::One;
+pub use pi::Pi;
 pub use round::Round;
 pub use signum::Signum;
 pub use sqrt::Sqrt;
@@ -35,6 +37,7 @@ pub trait Num:
     + Abs
     + FromPrimitive
     + Trig
+    + Pi
     + PartialEq
     + PartialOrd
     + Round
@@ -53,6 +56,7 @@ impl<T> Num for T where T:
     + Abs
     + FromPrimitive
     + Trig
+    + Pi
     + PartialEq
     + PartialOrd
     + Round
