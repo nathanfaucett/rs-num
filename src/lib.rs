@@ -1,55 +1,38 @@
-#![feature(core_intrinsics, collections)]
 #![no_std]
 
-extern crate libc;
-extern crate collections;
 
-use collections::string::ToString;
+extern crate abs;
+extern crate from_primitive;
+extern crate max;
+extern crate min;
+extern crate one;
+extern crate round;
+extern crate signum;
+extern crate sqrt;
+extern crate trig;
+extern crate zero;
+
 use core::ops::*;
 
-pub mod abs;
 pub use abs::Abs;
-
-pub mod pi;
-pub use pi::PI;
-
-pub mod from_primitive;
 pub use from_primitive::FromPrimitive;
-
-pub mod min;
-pub use min::Min;
-
-pub mod max;
 pub use max::Max;
-
-pub mod signum;
-pub use signum::Signum;
-
-pub mod one;
+pub use min::Min;
 pub use one::One;
-
-pub mod zero;
-pub use zero::Zero;
-
-pub mod sqrt;
-pub use sqrt::Sqrt;
-
-pub mod trig;
-pub use trig::Trig;
-
-pub mod round;
 pub use round::Round;
+pub use signum::Signum;
+pub use sqrt::Sqrt;
+pub use trig::Trig;
+pub use zero::Zero;
 
 pub trait Num:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
     + Abs
-    + PI
     + FromPrimitive
     + Trig
     + PartialEq
     + PartialOrd
-    + ToString
     + Round
 
     + Add<Self, Output = Self>
@@ -63,12 +46,10 @@ impl<T> Num for T where T:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
     + Abs
-    + PI
     + FromPrimitive
     + Trig
     + PartialEq
     + PartialOrd
-    + ToString
     + Round
 
     + Add<T, Output = T>
