@@ -1,5 +1,8 @@
+#![feature(collections)]
 #![no_std]
 
+
+extern crate collections;
 
 extern crate abs;
 extern crate from_primitive;
@@ -12,6 +15,7 @@ extern crate sqrt;
 extern crate trig;
 extern crate zero;
 
+use collections::string::ToString;
 use core::ops::*;
 
 pub use abs::Abs;
@@ -34,6 +38,7 @@ pub trait Num:
     + PartialEq
     + PartialOrd
     + Round
+    + ToString
 
     + Add<Self, Output = Self>
     + Mul<Self, Output = Self>
@@ -51,6 +56,7 @@ impl<T> Num for T where T:
     + PartialEq
     + PartialOrd
     + Round
+    + ToString
 
     + Add<T, Output = T>
     + Mul<T, Output = T>
