@@ -1,4 +1,4 @@
-#![feature(collections)]
+#![feature(collections, reflect_marker)]
 #![no_std]
 
 
@@ -17,6 +17,7 @@ extern crate trig;
 extern crate zero;
 
 use collections::string::ToString;
+use core::marker::Reflect;
 use core::ops::*;
 
 pub use abs::Abs;
@@ -42,6 +43,7 @@ pub trait Num:
     + PartialOrd
     + Round
     + ToString
+    + Reflect
 
     + Add<Self, Output = Self>
     + Mul<Self, Output = Self>
@@ -61,6 +63,7 @@ impl<T> Num for T where T:
     + PartialOrd
     + Round
     + ToString
+    + Reflect
 
     + Add<T, Output = T>
     + Mul<T, Output = T>
