@@ -4,7 +4,7 @@ num [![Build Status](https://travis-ci.org/nathanfaucett/rs-num.svg?branch=maste
 generic number trait
 
 ```rust
-extern crate num;
+
 use num::Num;
 
 fn add<T: Num>(a: T, b: T) -> T {
