@@ -16,6 +16,12 @@ git = "https://github.com/nathanfaucett/rs-abs.git"
 [dependencies.bounded]
 git = "https://github.com/nathanfaucett/rs-bounded.git"
 
+[dependencies.to_degrees]
+git = "https://github.com/nathanfaucett/rs-to_degrees.git"
+
+[dependencies.to_radians]
+git = "https://github.com/nathanfaucett/rs-to_radians.git"
+
 [dependencies.to_primitive]
 git = "https://github.com/nathanfaucett/rs-to_primitive.git"
 

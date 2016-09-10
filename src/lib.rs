@@ -6,6 +6,8 @@ extern crate collections;
 
 extern crate abs;
 extern crate bounded;
+extern crate to_degrees;
+extern crate to_radians;
 extern crate to_primitive;
 extern crate from_primitive;
 extern crate max;
@@ -26,6 +28,8 @@ use core::ops::*;
 
 use abs::Abs;
 use bounded::Bounded;
+use to_degrees::ToDegrees;
+use to_radians::ToRadians;
 use to_primitive::ToPrimitive;
 use from_primitive::FromPrimitive;
 use max::Max;
@@ -44,6 +48,8 @@ pub trait Num:
     + Min + Max + Signum
     + Abs
     + Bounded
+    + ToDegrees
+    + ToRadians
     + ToPrimitive
     + FromPrimitive
     + Trig
@@ -66,6 +72,8 @@ impl<T> Num for T where T:
     + Min + Max + Signum
     + Abs
     + Bounded
+    + ToDegrees
+    + ToRadians
     + ToPrimitive
     + FromPrimitive
     + Trig
