@@ -1,4 +1,4 @@
-#![feature(collections, reflect_marker)]
+#![feature(collections)]
 #![no_std]
 
 
@@ -22,7 +22,6 @@ extern crate zero;
 
 
 use collections::string::ToString;
-use core::marker::Reflect;
 use core::ops::*;
 
 
@@ -58,13 +57,19 @@ pub trait Num:
     + PartialOrd
     + Round
     + ToString
-    + Reflect
 
     + Add<Self, Output = Self>
     + Mul<Self, Output = Self>
     + Sub<Self, Output = Self>
     + Div<Self, Output = Self>
     + Rem<Self, Output = Self>
+
+    + AddAssign<Self>
+    + MulAssign<Self>
+    + SubAssign<Self>
+    + DivAssign<Self>
+    + RemAssign<Self>
+
     + Neg<Output = Self> {}
 
 impl<T> Num for T where T:
@@ -82,11 +87,17 @@ impl<T> Num for T where T:
     + PartialOrd
     + Round
     + ToString
-    + Reflect
 
     + Add<T, Output = T>
     + Mul<T, Output = T>
     + Sub<T, Output = T>
     + Div<T, Output = T>
     + Rem<T, Output = T>
+
+    + AddAssign<T>
+    + MulAssign<T>
+    + SubAssign<T>
+    + DivAssign<T>
+    + RemAssign<T>
+
     + Neg<Output = T> {}
