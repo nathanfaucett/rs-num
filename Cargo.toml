@@ -13,6 +13,9 @@ homepage = "https://github.com/nathanfaucett/rs-num"
 [dependencies.abs]
 git = "https://github.com/nathanfaucett/rs-abs.git"
 
+[dependencies.approx]
+git = "https://github.com/nathanfaucett/rs-approx.git"
+
 [dependencies.bounded]
 git = "https://github.com/nathanfaucett/rs-bounded.git"
 

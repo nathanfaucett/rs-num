@@ -5,6 +5,7 @@
 extern crate collections;
 
 extern crate abs;
+extern crate approx;
 extern crate bounded;
 extern crate to_degrees;
 extern crate to_radians;
@@ -24,8 +25,8 @@ extern crate zero;
 use collections::string::ToString;
 use core::ops::*;
 
-
 use abs::Abs;
+use approx::Approx;
 use bounded::Bounded;
 use to_degrees::ToDegrees;
 use to_radians::ToRadians;
@@ -46,6 +47,7 @@ pub trait Num:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
     + Abs
+    + Approx
     + Bounded
     + ToDegrees
     + ToRadians
@@ -76,6 +78,7 @@ impl<T> Num for T where T:
     Copy + One + Zero + Sqrt
     + Min + Max + Signum
     + Abs
+    + Approx
     + Bounded
     + ToDegrees
     + ToRadians
