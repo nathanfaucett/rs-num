@@ -70,9 +70,7 @@ pub trait Num:
     + MulAssign<Self>
     + SubAssign<Self>
     + DivAssign<Self>
-    + RemAssign<Self>
-
-    + Neg<Output = Self> {}
+    + RemAssign<Self> {}
 
 impl<T> Num for T where T:
     Copy + One + Zero + Sqrt
@@ -101,6 +99,4 @@ impl<T> Num for T where T:
     + MulAssign<T>
     + SubAssign<T>
     + DivAssign<T>
-    + RemAssign<T>
-
-    + Neg<Output = T> {}
+    + RemAssign<T> {}
