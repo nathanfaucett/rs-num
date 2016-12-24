@@ -19,6 +19,9 @@ git = "https://github.com/nathanfaucett/rs-approx.git"
 [dependencies.bounded]
 git = "https://github.com/nathanfaucett/rs-bounded.git"
 
+[dependencies.clamp]
+git = "https://github.com/nathanfaucett/rs-clamp.git"
+
 [dependencies.to_degrees]
 git = "https://github.com/nathanfaucett/rs-to_degrees.git"
 

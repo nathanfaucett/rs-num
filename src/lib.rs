@@ -7,6 +7,7 @@ extern crate collections;
 extern crate abs;
 extern crate approx;
 extern crate bounded;
+extern crate clamp;
 extern crate to_degrees;
 extern crate to_radians;
 extern crate to_primitive;

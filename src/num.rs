@@ -4,6 +4,7 @@ use core::ops::*;
 use abs::Abs;
 use approx::Approx;
 use bounded::Bounded;
+use clamp::Clamp;
 use to_degrees::ToDegrees;
 use to_radians::ToRadians;
 use to_primitive::ToPrimitive;
@@ -25,6 +26,7 @@ pub trait Num:
     + Abs
     + Approx
     + Bounded
+    + Clamp
     + ToDegrees
     + ToRadians
     + ToPrimitive
@@ -54,6 +56,7 @@ impl<T> Num for T where T:
     + Abs
     + Approx
     + Bounded
+    + Clamp
     + ToDegrees
     + ToRadians
     + ToPrimitive
