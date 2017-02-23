@@ -12,6 +12,7 @@ use from_primitive::FromPrimitive;
 use max::Max;
 use min::Min;
 use one::One;
+use round::Round;
 use signum::Signum;
 use sqrt::Sqrt;
 use trig::Trig;
@@ -31,6 +32,7 @@ pub trait Num:
     + FromPrimitive
     + Trig
     + Sqrt
+    + Round
     + PartialEq
     + PartialOrd
     + ToString
@@ -61,6 +63,7 @@ impl<T> Num for T where T:
     + FromPrimitive
     + Trig
     + Sqrt
+    + Round
     + PartialEq
     + PartialOrd
     + ToString
