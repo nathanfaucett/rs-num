@@ -12,8 +12,6 @@ use from_primitive::FromPrimitive;
 use max::Max;
 use min::Min;
 use one::One;
-use pi::Pi;
-use round::Round;
 use signum::Signum;
 use sqrt::Sqrt;
 use trig::Trig;
@@ -21,7 +19,7 @@ use zero::Zero;
 
 
 pub trait Num:
-    Copy + One + Zero + Sqrt
+    Copy + One + Zero
     + Min + Max + Signum
     + Abs
     + Approx
@@ -32,10 +30,9 @@ pub trait Num:
     + ToPrimitive
     + FromPrimitive
     + Trig
-    + Pi
+    + Sqrt
     + PartialEq
     + PartialOrd
-    + Round
     + ToString
 
     + Add<Self, Output = Self>
@@ -50,8 +47,9 @@ pub trait Num:
     + DivAssign<Self>
     + RemAssign<Self> {}
 
+
 impl<T> Num for T where T:
-    Copy + One + Zero + Sqrt
+    Copy + One + Zero
     + Min + Max + Signum
     + Abs
     + Approx
@@ -62,10 +60,9 @@ impl<T> Num for T where T:
     + ToPrimitive
     + FromPrimitive
     + Trig
-    + Pi
+    + Sqrt
     + PartialEq
     + PartialOrd
-    + Round
     + ToString
 
     + Add<T, Output = T>
