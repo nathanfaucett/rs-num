@@ -12,7 +12,7 @@ use zero::Zero;
 
 
 pub trait Num:
-    Copy + One + Zero
+    Clone + One + Zero
     + Bounded
     + ToPrimitive
     + FromPrimitive
@@ -69,7 +69,7 @@ pub trait Num:
 
 
 impl<T> Num for T where T:
-    Copy + One + Zero
+    Clone + One + Zero
     + Bounded
     + ToPrimitive
     + FromPrimitive
