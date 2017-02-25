@@ -12,7 +12,7 @@ use zero::Zero;
 
 
 pub trait Num:
-    Clone + One + Zero
+    Copy + One + Zero
     + Bounded
     + ToPrimitive
     + FromPrimitive
@@ -46,11 +46,11 @@ pub trait Num:
     #[inline(always)]
     fn clamp(&self, min: &Self, max: &Self) -> Self {
         if self < min {
-            min.clone()
+            *min
         } else if self > max {
-            max.clone()
+            *max
         } else {
-            self.clone()
+            *self
         }
     }
     /// # Examples
@@ -69,7 +69,7 @@ pub trait Num:
 
 
 impl<T> Num for T where T:
-    Clone + One + Zero
+    Copy + One + Zero
     + Bounded
     + ToPrimitive
     + FromPrimitive
