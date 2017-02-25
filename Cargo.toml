@@ -11,6 +11,7 @@ repository = "https://github.com/nathanfaucett/rs-num.git"
 homepage = "https://github.com/nathanfaucett/rs-num"
 
 [dependencies]
+abs = {git = "https://github.com/nathanfaucett/rs-abs.git"}
 bounded = {git = "https://github.com/nathanfaucett/rs-bounded.git"}
 to_primitive = {git = "https://github.com/nathanfaucett/rs-to_primitive.git"}
 from_primitive = {git = "https://github.com/nathanfaucett/rs-from_primitive.git"}

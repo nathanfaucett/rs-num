@@ -1,6 +1,7 @@
 use collections::string::ToString;
 use core::ops::*;
 
+use abs::Abs;
 use bounded::Bounded;
 use to_primitive::ToPrimitive;
 use from_primitive::FromPrimitive;
@@ -13,6 +14,7 @@ use zero::Zero;
 
 pub trait Num:
     Copy + One + Zero
+    + Abs
     + Bounded
     + ToPrimitive
     + FromPrimitive
@@ -70,6 +72,7 @@ pub trait Num:
 
 impl<T> Num for T where T:
     Copy + One + Zero
+    + Abs
     + Bounded
     + ToPrimitive
     + FromPrimitive
