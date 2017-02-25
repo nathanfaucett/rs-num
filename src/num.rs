@@ -39,18 +39,18 @@ pub trait Num:
     /// ~~~
     /// use num::Num;
     ///
-    /// assert_eq!((-50).clamp(0, 100), 0);
-    /// assert_eq!(50.clamp(0, 100), 50);
-    /// assert_eq!(150.clamp(0, 100), 100);
+    /// assert_eq!((-50).clamp(&0, &100), 0);
+    /// assert_eq!(50.clamp(&0, &100), 50);
+    /// assert_eq!(150.clamp(&0, &100), 100);
     /// ~~~
     #[inline(always)]
-    fn clamp(self, min: Self, max: Self) -> Self {
+    fn clamp(&self, min: &Self, max: &Self) -> Self {
         if self < min {
-            min
+            min.clone()
         } else if self > max {
-            max
+            max.clone()
         } else {
-            self
+            self.clone()
         }
     }
     /// # Examples
@@ -62,8 +62,8 @@ pub trait Num:
     /// assert_eq!(1.50.clamp01(), 1.0);
     /// ~~~
     #[inline(always)]
-    fn clamp01(self) -> Self {
-        self.clamp(Zero::zero(), One::one())
+    fn clamp01(&self) -> Self {
+        self.clamp(&Zero::zero(), &One::one())
     }
 }
 
