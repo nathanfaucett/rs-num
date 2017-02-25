@@ -1,19 +1,11 @@
 use collections::string::ToString;
 use core::ops::*;
 
-use abs::Abs;
-use approx::Approx;
 use bounded::Bounded;
-use clamp::Clamp;
-use to_degrees::ToDegrees;
-use to_radians::ToRadians;
 use to_primitive::ToPrimitive;
 use from_primitive::FromPrimitive;
-use max::Max;
-use min::Min;
-use one::One;
 use round::Round;
-use signum::Signum;
+use one::One;
 use sqrt::Sqrt;
 use trig::Trig;
 use zero::Zero;
@@ -21,13 +13,7 @@ use zero::Zero;
 
 pub trait Num:
     Copy + One + Zero
-    + Min + Max + Signum
-    + Abs
-    + Approx
     + Bounded
-    + Clamp
-    + ToDegrees
-    + ToRadians
     + ToPrimitive
     + FromPrimitive
     + Trig
@@ -47,18 +33,44 @@ pub trait Num:
     + MulAssign<Self>
     + SubAssign<Self>
     + DivAssign<Self>
-    + RemAssign<Self> {}
+    + RemAssign<Self>
+{
+    /// # Examples
+    /// ~~~
+    /// use num::Num;
+    ///
+    /// assert_eq!((-50).clamp(0, 100), 0);
+    /// assert_eq!(50.clamp(0, 100), 50);
+    /// assert_eq!(150.clamp(0, 100), 100);
+    /// ~~~
+    #[inline(always)]
+    fn clamp(self, min: Self, max: Self) -> Self {
+        if self < min {
+            min
+        } else if self > max {
+            max
+        } else {
+            self
+        }
+    }
+    /// # Examples
+    /// ~~~
+    /// use num::Num;
+    ///
+    /// assert_eq!((-0.5).clamp01(), 0.0);
+    /// assert_eq!(0.5.clamp01(), 0.5);
+    /// assert_eq!(1.50.clamp01(), 1.0);
+    /// ~~~
+    #[inline(always)]
+    fn clamp01(self) -> Self {
+        self.clamp(Zero::zero(), One::one())
+    }
+}
 
 
 impl<T> Num for T where T:
     Copy + One + Zero
-    + Min + Max + Signum
-    + Abs
-    + Approx
     + Bounded
-    + Clamp
-    + ToDegrees
-    + ToRadians
     + ToPrimitive
     + FromPrimitive
     + Trig
