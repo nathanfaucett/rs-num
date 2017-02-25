@@ -1,6 +1,5 @@
 use collections::string::ToString;
 use core::ops::*;
-use core::cmp::Ord;
 
 use abs::Abs;
 use approx::Approx;
@@ -34,7 +33,6 @@ pub trait Num:
     + Trig
     + Sqrt
     + Round
-    + Ord
     + PartialEq
     + PartialOrd
     + ToString
@@ -66,7 +64,6 @@ impl<T> Num for T where T:
     + Trig
     + Sqrt
     + Round
-    + Ord
     + PartialEq
     + PartialOrd
     + ToString
