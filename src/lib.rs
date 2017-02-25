@@ -4,7 +4,6 @@
 
 extern crate collections;
 
-extern crate abs;
 extern crate bounded;
 extern crate to_primitive;
 extern crate from_primitive;
