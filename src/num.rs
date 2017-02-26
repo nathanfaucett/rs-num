@@ -12,7 +12,7 @@ use zero::Zero;
 
 
 pub trait Num:
-    Copy + One + Zero
+    Clone + One + Zero
     + Bounded
     + ToPrimitive
     + FromPrimitive
@@ -45,9 +45,9 @@ pub trait Num:
     #[inline]
     fn min(&self, other: &Self) -> Self {
         if self < other {
-            *self
+            self.clone()
         } else {
-            *other
+            other.clone()
         }
     }
     /// # Examples
@@ -60,9 +60,9 @@ pub trait Num:
     #[inline]
     fn max(&self, other: &Self) -> Self {
         if self > other {
-            *self
+            self.clone()
         } else {
-            *other
+            other.clone()
         }
     }
     /// # Examples
