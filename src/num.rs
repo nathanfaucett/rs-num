@@ -39,19 +39,43 @@ pub trait Num:
     /// ~~~
     /// use num::Num;
     ///
+    /// assert_eq!(50.min(&100), 50);
+    /// assert_eq!(100.min(&50), 50);
+    /// ~~~
+    #[inline]
+    fn min(&self, other: &Self) -> Self {
+        if self < other {
+            *self
+        } else {
+            *other
+        }
+    }
+    /// # Examples
+    /// ~~~
+    /// use num::Num;
+    ///
+    /// assert_eq!(50.max(&100), 100);
+    /// assert_eq!(100.max(&50), 100);
+    /// ~~~
+    #[inline]
+    fn max(&self, other: &Self) -> Self {
+        if self > other {
+            *self
+        } else {
+            *other
+        }
+    }
+    /// # Examples
+    /// ~~~
+    /// use num::Num;
+    ///
     /// assert_eq!((-50).clamp(&0, &100), 0);
     /// assert_eq!(50.clamp(&0, &100), 50);
     /// assert_eq!(150.clamp(&0, &100), 100);
     /// ~~~
-    #[inline(always)]
+    #[inline]
     fn clamp(&self, min: &Self, max: &Self) -> Self {
-        if self < min {
-            *min
-        } else if self > max {
-            *max
-        } else {
-            *self
-        }
+        self.min(max).max(min)
     }
     /// # Examples
     /// ~~~
