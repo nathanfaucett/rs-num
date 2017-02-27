@@ -93,7 +93,7 @@ pub trait Num:
 
 
 impl<T> Num for T where T:
-    Copy + One + Zero
+    Clone + One + Zero
     + Bounded
     + ToPrimitive
     + FromPrimitive
