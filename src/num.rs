@@ -23,17 +23,17 @@ pub trait Num:
     + PartialOrd
     + ToString
 
-    + Add<Self, Output = Self>
-    + Mul<Self, Output = Self>
-    + Sub<Self, Output = Self>
-    + Div<Self, Output = Self>
-    + Rem<Self, Output = Self>
+    + Add<Output = Self>
+    + Mul<Output = Self>
+    + Sub<Output = Self>
+    + Div<Output = Self>
+    + Rem<Output = Self>
 
-    + AddAssign<Self>
-    + MulAssign<Self>
-    + SubAssign<Self>
-    + DivAssign<Self>
-    + RemAssign<Self>
+    + AddAssign
+    + MulAssign
+    + SubAssign
+    + DivAssign
+    + RemAssign
 {
     /// # Examples
     /// ~~~
@@ -92,26 +92,44 @@ pub trait Num:
 }
 
 
-impl<T> Num for T where T:
-    Clone + One + Zero
-    + Bounded
-    + ToPrimitive
-    + FromPrimitive
-    + Trig
-    + Sqrt
-    + Round
-    + PartialEq
-    + PartialOrd
-    + ToString
+impl<'a, 'b, T> Num for T where
+    &'a T: Add<T, Output = T>
+         + Mul<T, Output = T>
+         + Sub<T, Output = T>
+         + Div<T, Output = T>
+         + Rem<T, Output = T>
 
-    + Add<T, Output = T>
-    + Mul<T, Output = T>
-    + Sub<T, Output = T>
-    + Div<T, Output = T>
-    + Rem<T, Output = T>
+         + Add<&'b T, Output = T>
+         + Mul<&'b T, Output = T>
+         + Sub<&'b T, Output = T>
+         + Div<&'b T, Output = T>
+         + Rem<&'b T, Output = T>,
 
-    + AddAssign<T>
-    + MulAssign<T>
-    + SubAssign<T>
-    + DivAssign<T>
-    + RemAssign<T> {}
+    T: 'a + 'b + Clone + One + Zero
+     + Bounded
+     + ToPrimitive
+     + FromPrimitive
+     + Trig
+     + Sqrt
+     + Round
+     + PartialEq
+     + PartialOrd
+     + ToString
+
+     + Add<T, Output = T>
+     + Mul<T, Output = T>
+     + Sub<T, Output = T>
+     + Div<T, Output = T>
+     + Rem<T, Output = T>
+
+     + Add<&'b T, Output = T>
+     + Mul<&'b T, Output = T>
+     + Sub<&'b T, Output = T>
+     + Div<&'b T, Output = T>
+     + Rem<&'b T, Output = T>
+
+     + AddAssign<T>
+     + MulAssign<T>
+     + SubAssign<T>
+     + DivAssign<T>
+     + RemAssign<T> {}
