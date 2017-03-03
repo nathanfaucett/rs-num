@@ -73,7 +73,7 @@ pub trait Num:
     /// assert_eq!(50.clamp(&0, &100), 50);
     /// assert_eq!(150.clamp(&0, &100), 100);
     /// ~~~
-    #[inline]
+    #[inline(always)]
     fn clamp(&self, min: &Self, max: &Self) -> Self {
         self.min(max).max(min)
     }
@@ -88,6 +88,21 @@ pub trait Num:
     #[inline(always)]
     fn clamp01(&self) -> Self {
         self.clamp(&Zero::zero(), &One::one())
+    }
+    /// # Examples
+    /// ~~~
+    /// use num::Num;
+    ///
+    /// assert_eq!(10.abs_diff(&15), 5);
+    /// assert_eq!(15.abs_diff(&10), 5);
+    /// ~~~
+    #[inline]
+    fn abs_diff(&self, other: &Self) -> Self {
+        if self > other {
+            self.clone() - other.clone()
+        } else {
+            other.clone() - self.clone()
+        }
     }
 }
 
